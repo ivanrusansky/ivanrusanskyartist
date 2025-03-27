@@ -1,0 +1,417 @@
+/* Definición de variables CSS */
+:root {
+    --background-color: #d1d1d1; /* Fondo gris más oscuro */
+    --text-color: #242424; /* Texto oscuro */
+    --divider-color: #242424; /* Líneas divisoras negras */
+    --frosted-background: transparent; /* Sin fondo frosted, para unificar con el fondo */
+    --icon-size: 40px;
+    --button-height: 40px;
+    --button-width: 120px;
+    --font-family: "Atkinson Hyperlegible Mono", sans-serif; /* Tipografía Montserrat */
+}
+
+/* Estilo del body */
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Barra de Navegación */
+.navbar {
+    background-color: var(--background-color); /* Mismo fondo que el body */
+    padding: 15px 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.perfil {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+.perfilabout {
+    display: none;
+}
+
+.navbar-brand {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 400;
+    text-transform: uppercase; /* Mayúsculas para el nombre del sitio */
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: var(--text-color);
+    font-size: smaller;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase; /* Mayúsculas para los enlaces del navbar */
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #666;
+}
+
+.nav-link.active {
+    font-size: smaller;
+    font-weight: 800;
+    color: var(--text-color);
+}
+
+/* Galería */
+.gallery-container {
+    background-color: var(--background-color); /* Mismo fondo que el body */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.gallery-container h1 {
+    font-family: var(--font-family);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 40px 0 20px;
+    position: relative;
+    text-align: left;
+    text-transform: uppercase; /* Mayúsculas para los h1 */
+    transform: scaleY(1.1);
+}
+
+.gallery-container h1::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 5px; /* Grosor de 5px */
+    background: var(--divider-color); /* Línea negra sólida */
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: left;
+}
+
+.album-item {
+    width: 180px;
+    position: relative;
+}
+
+.gallery-img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: inset 0px 0px 5px rgba(68, 67, 67, 0.856);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Títulos de los álbumes */
+.album-title {
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 10px;
+    text-align: center;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Detalles del álbum */
+.album-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    z-index: 10;
+    display: none;
+    box-sizing: border-box;
+}
+
+.album-details.active {
+    display: block;
+}
+
+.close-button {
+    position: absolute;
+    top: -25px;
+    right: 37px;
+    background: #242424; /* Fondo oscuro para coincidir con la imagen */
+    border: 2px solid #ffffff00; /* Borde blanco como en la imagen */
+    border-radius: 0; /* Sin bordes redondeados, rectángulo puro */
+    padding: 5px 15px; /* Espaciado interno para el texto */
+    font-family: var(--font-family); /* Mantiene la fuente del proyecto */
+    font-size: 14px; /* Tamaño de fuente ajustado para que coincida con el estilo */
+    font-weight: 400; /* Peso de fuente ligero, como en la imagen */
+    color: #dddddd; /* Texto blanco */
+    
+    cursor: pointer;
+    transition: background 0.3s ease; /* Transición suave para el fondo */
+}
+
+.close-button:hover {
+    background: #444; /* Fondo ligeramente más claro al pasar el ratón */
+}
+
+.album-details-content {
+    display: flex;
+    align-items: center;
+}
+
+.gallery-container .album-details-content img {
+    border-radius: 8px;
+    max-height: 60vh;
+    object-fit: contain;
+    width: 45%;
+    margin-right: 20px;
+}
+
+.album-details-content .details-text {
+    width: 55%;
+}
+
+.album-details-content h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.song-list {
+    list-style: none;
+    padding: 0;
+}
+
+.song-list li {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+/* Contenedor de "Acerca de mí" */
+.about-container {
+    background-color: var(--background-color); /* Mismo fondo que el body */
+    padding: 40px;
+    max-width: 800px;
+    margin: 20px auto;
+    position: relative;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+}
+
+.about-profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 10%;
+}
+
+.about-text h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase; /* Mayúsculas para el h1 */
+    margin-bottom: 10%;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+/* Plataformas de música */
+.music-platforms {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px 0;
+    padding-top: 20px;
+    position: relative;
+}
+
+.music-platforms::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px; /* Grosor de 5px */
+    background: var(--divider-color); /* Línea negra sólida */
+}
+
+.platform {
+    text-align: center;
+}
+
+.platform a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.platform-logo {
+    display: block;
+    width: 90px;
+    height: 120px;
+    object-fit: contain;
+    margin: 0 auto 15px;
+    transition: transform 0.3s ease;
+}
+
+.platform-logo:hover {
+    transform: scale(0.9);
+}
+
+.platform p {
+    font-weight: 300;
+    margin: 0;
+}
+
+/* Ajustes responsivos */
+
+@media (min-width: 769px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 400;
+        text-transform: uppercase; 
+        margin-left: -70%;
+    }
+
+    .navbar-brandabout{
+        font-size: 1.3rem;
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 400;
+        text-transform: uppercase; 
+        margin-left: 0%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .about-text p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin-bottom: 15px;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+
+    .navbar-brandabout{
+        font-size: 1.3rem;
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 400;
+        text-transform: uppercase; /* Mayúsculas para el nombre del sitio */
+        margin-left: 0%;
+    }
+
+    .gallery-container {
+        padding: 10px;
+    }
+
+    .album-item {
+        width: calc((100% - 40px) / 2);
+    }
+
+    .gallery-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .album-details-content {
+        flex-direction: column;
+    }
+
+    .gallery-container .album-details-content img {
+        width: 100%;
+        max-height: 40vh;
+        margin-bottom: 20px;
+    }
+
+    .album-details-content .details-text {
+        width: 100%;
+    }
+
+    .about-container {
+        padding: 20px;
+    }
+
+    .about-profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .music-platforms {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .album-title {
+        font-size: 12px;
+    }
+
+    .platform-logo {
+        display: block;
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        margin: 0 auto 20px;
+        transition: transform 0.3s ease;
+        margin-top: 20%;
+    }
+}
